@@ -1,0 +1,52 @@
+<!-- <h1> Tela Usuários </h1>
+
+
+<div>
+ <a href="/" class="btn btn-default">Cancelar</a>
+ <a href="/user/add" class="btn btn-primary"> Novo Usuário</a>
+
+</div>
+</br> -->
+
+<?php
+ // echo '<pre/>';
+ // var_dump($usuarios);
+ ?>
+
+ <?php
+
+ $title = 'Usuários';
+
+ $this->headTitle($title);
+
+ ?>
+
+ <h1><?=$this->escapeHtml($title)?></h1>
+
+<a href="/user/add" class="btn btn-primary"> Novo Usuário</a>
+
+ <table class="table">
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Email</th>
+       <th>Opções</th>
+     </tr>
+   </thead>
+   <tbody>
+
+   <?php foreach ($users as $user) :?>
+
+     <tr>
+       <td><?=$this->escapeHtml($user->getId())?></td>
+       <td><?=$this->escapeHtml($user->getNome())?></td>
+       <td><?=$this->escapeHtml($user->getEmail())?></td>
+       <td>
+           <a class="btn btn-primary" href="<?php echo $this->url('user', ['action'=>'edit', 'id'=>$user->getId()])?>">Editar</a>
+           <a class="btn btn-danger" href="<?php echo $this->url('user', ['action'=>'delete', 'id'=>$user->getId()])?>">Deletar</a>
+       </td>
+     </tr>
+   <?php endforeach ?>
+   </tbody>
+ </table>

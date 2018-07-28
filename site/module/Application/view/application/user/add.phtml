@@ -1,0 +1,39 @@
+<?php
+
+$title = 'Adicionar novo Usuário';
+
+$this->headTitle($title);
+
+ ?>
+
+ <h1><?=$this->escapeHtml($title)?></h1>
+
+<?php
+
+$form->setAttribute('action', $this->url('user', ['action'=>'add']));
+$form->prepare();
+?>
+
+<?php
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+
+<?php
+echo $this->formRow($form->get('nome'));
+?>
+<br>
+
+<?php
+echo $this->formRow($form->get('email'));
+?>
+<br>
+<?php
+echo $this->formSubmit($form->get('submit'));
+?>
+
+<a href="/user" class="btn btn-default">Cancelar</a>
+<?php
+echo $this->form()->closeTag();
+?>
+<br>
